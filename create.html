@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    
-    <title>Collage-Journal | Home</title>
+
+    <title>Collage-journal | Criar</title>
 </head>
 <body>
     <header>
@@ -31,7 +31,7 @@
                             <a class="nav-link" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="make.html">Como funciona</a>
+                            <a class="nav-link" href="how-it-works.html">Como funciona</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="create.html">Criar</a>
@@ -41,71 +41,52 @@
             </div>
         </nav>
     </header>
-    <main>
-        <section class="banner">
-            <h1>Collage-journal</h1>
-            <h2>Transforme momentos em páginas.</h2>
+    <main class="container-fluid create-page">
+        <section class="create-header">
+            <h1>Crie sua página</h1>
+            <p>Monte sua própria composição e transforme suas ideias em uma página de journal.</p>
         </section>
-        <section>
-            <h4>Journal</h4>
-            <p>Um journal é uma forma de registrar aquilo que queremos lembrar, organizar ou simplesmente colocar para fora.</p>
-            <p>Palavras, imagens, datas, pensamentos, pequenos acontecimentos. Não existe uma maneira certa de montar uma página.</p>
-            <p>O Collage-journal transforma essa experiência em um espaço digital para criar, experimentar e guardar.</p>
+        <section class="file-name-section">
+            <div class="container">
+                <label for="fileName" class="form-label">Nome da página</label>
+                <input type="text" class="form-control" id="fileName" placeholder="ex: meu-journal">
+            </div>
         </section>
-        <section>
-            <h4>O que é um journal</h4>
-            <p>Um journal é um espaço para registrar experiências, pensamentos, ideias e momentos do cotidiano.</p>
-            <p>Pode ser um diário, uma coleção de memórias, um lugar para organizar planos ou simplesmente uma página criada porque alguma coisa chamou sua atenção.</p>
-            <p>Algumas páginas são cheias de texto. Outras têm apenas uma fotografia, uma data ou algumas palavras.</p>
-            <p>O importante não é seguir um formato específico, mas encontrar uma maneira de registrar aquilo que faz sentido para você.</p>
-        </section>
-        <section>
-            <h4>Um journal não precisa ser uma coisa só.</h4>
-            <section class="carrocel">
-                <article class="card">
-                    <img>
-                    <div>
-                        <h3>Diário</h3>
-                        <p>Um espaço para escrever sobre acontecimentos, pensamentos e sentimentos do cotidiano.</p>
+        <section class="editor container-fluid">
+            <div class="row">
+                <aside class="col-lg-3 editor-sidebar">
+                    <h2>Elementos</h2>
+                    <div class="tool-section">
+                        <h3>Texto</h3>
+                        <button type="button" id="addText" class="btn btn-outline-dark" >+ Adicionar texto</button>
                     </div>
-                </article>
-                <article class="card">
-                    <img>
-                    <div>
-                        <h3>Bullet Journal</h3>
-                        <p>Uma maneira flexível de organizar tarefas, planos, hábitos e compromissos.</p>
+                    <div class="tool-section">
+                        <h3>Imagens</h3>
+                        <div class="image-options">
+                            <button class="image-option" data-image="img1"><img src="assets/images/img1.jpg" alt="Imagem 1" ></button>
+                            <button class="image-option" data-image="img2">
+                                <img src="assets/images/img2.jpg" alt="Imagem 2" >
+                            </button>
+                            <button class="image-option" data-image="img3">
+                                <img src="assets/images/img3.jpg" alt="Imagem 3">
+                            </button>
+                        </div>
                     </div>
-                </article>
-                <article class="card">
-                    <img>
-                    <div>
-                        <h3>Collage Journal</h3>
-                        <p>Uma combinação de imagens, textos, desenhos, cores e diferentes elementos visuais.</p>
+                </aside>
+                <section class="col-lg-9 editor-workspace">
+                    <div class="canvas-container">
+                        <canvas id="journalCanvas" width="900" height="700">
+                        </canvas>
                     </div>
-                </article>
-                <article class="card">
-                    <img>
-                    <div>
-                        <h3>Journal Digital</h3>
-                        <p>A experiência de registrar e organizar tudo isso utilizando ferramentas digitais.</p>
-                    </div>
-                </article>
-            </section>
+                </section>
+            </div>
         </section>
-        <section>
-            <h4>E se o journal fosse digital?</h4>
-            <p>O papel tem suas próprias possibilidades: textura, recortes, desenhos, fotografias e páginas que carregam marcas de quem as criou.</p>
-            <p>O meio digital permite experimentar essas ideias de outra maneira.</p>
-            <p>É possível reorganizar elementos, combinar diferentes tipos de conteúdo, testar novas composições e guardar cada criação sem precisar começar uma nova página física.</p>
-            <p>O Collage-journal nasce justamente desse encontro: a liberdade visual da colagem com a flexibilidade do digital.</p>
-        </section>
-        <section>
-            <h4>Pronto para criar uma página?</h4>
-            <p>Tente criar a sua:</p>
-            <button><a href="create.html">Criar meu journal</a></button>
+        <section class="save-section text-center">
+            <button type="button" class="btn btn-dark" id="saveJournal">Salvar página</button>
         </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/create.js"></script>
     <button
         type="button"
         class="btn btn-outline-dark bug-button"
@@ -154,6 +135,5 @@
     <footer>
         <p>@todos os direitos reservados</p>
     </footer>
-    <script src="./js/script.js"></script>
 </body>
 </html>
