@@ -170,7 +170,7 @@ botoesImagem.forEach((botao) => {
 
         imagem.onload = () => {
 
-            const largura = 250;
+            const largura = 100;
 
             const proporcao =
                 imagem.height / imagem.width;
@@ -404,12 +404,22 @@ const botaoSalvar =
 const campoNome =
     document.getElementById("fileName");
 
+    const spinnerSalvar =
+    document.getElementById("saveSpinner");
+
+const textoSalvar =
+    document.getElementById("saveText");
+
+const formularioBug =
+    document.getElementById("bugForm");
+
+const mensagemBug =
+    document.getElementById("bugMessage");
 
 botaoSalvar.addEventListener("click", () => {
 
     let nome =
         campoNome.value.trim();
-
 
     if (nome === "") {
         nome = "meu-journal";
@@ -420,23 +430,54 @@ botaoSalvar.addEventListener("click", () => {
         "-"
     );
 
-    const imagem =
-        canvas.toDataURL("image/png");
+    spinnerSalvar.classList.remove("d-none");
+    textoSalvar.textContent = "Salvando...";
+    botaoSalvar.disabled = true;
 
+    setTimeout(() => {
 
+        const imagem =
+            canvas.toDataURL("image/png");
 
-    const link =
-        document.createElement("a");
+        const link =
+            document.createElement("a");
 
+        link.download =
+            `${nome}.png`;
 
-    link.download =
-        `${nome}.png`;
+        link.href =
+            imagem;
 
-    link.href =
-        imagem;
+        link.click();
 
+        spinnerSalvar.classList.add("d-none");
+        textoSalvar.textContent = "Salvo!";
+        botaoSalvar.disabled = false;
 
-    link.click();
+        setTimeout(() => {
+            textoSalvar.textContent = "Salvar página";
+        }, 1500);
+
+    }, 800);
 });
 
 desenharCanvas();
+
+const formularioBug =
+    document.getElementById("bugForm");
+
+const mensagemBug =
+    document.getElementById("bugMessage");
+
+
+formularioBug.addEventListener("submit", (evento) => {
+
+    evento.preventDefault();
+
+    console.log("Mensagem enviada com sucesso!");
+
+    mensagemBug.classList.remove("d-none");
+
+    formularioBug.reset();
+
+});
